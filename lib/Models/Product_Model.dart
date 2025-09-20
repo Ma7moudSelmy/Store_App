@@ -1,11 +1,10 @@
-import 'package:flutter/foundation.dart';
-
 class ProductModel {
   final int id;
   final String title;
   final double price;
   final String description;
   final String image;
+  final Rating rating;
 
   ProductModel({
     required this.id,
@@ -13,6 +12,7 @@ class ProductModel {
     required this.price,
     required this.description,
     required this.image,
+    required this.rating,
   });
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
@@ -21,6 +21,7 @@ class ProductModel {
       price: (json['price'] as num).toDouble(),
       description: json['description'],
       image: json['image'],
+      rating: Rating.fromJson(json['rating']),
     );
   }
 }
