@@ -8,11 +8,17 @@ class AllProductsServices {
     http.Response resresponse = await http.get(
       Uri.parse("https://fakestoreapi.com/products"),
     );
-    List<dynamic> data = jsonDecode(resresponse.body);
-    List<ProductModel> productsList = [];
-    for (var i = 0; i < data.length; i++) {
-      productsList.add(ProductModel.fromJson(data[i]));
+    if (resresponse.statusCode == 200) {
+      {
+        List<dynamic> data = jsonDecode(resresponse.body);
+        List<ProductModel> productsList = [];
+        for (var i = 0; i < data.length; i++) {
+          productsList.add(ProductModel.fromJson(data[i]));
+        }
+        return productsList;
+      }
+    } else {
+      throw Exception('Failed to load products {$resresponse.statusCode}');
     }
-    return productsList;
   }
 }
