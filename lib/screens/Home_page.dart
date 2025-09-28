@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/Widgets/cusom_card_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -15,6 +16,15 @@ class HomePage extends StatelessWidget {
 
         elevation: 0,
         backgroundColor: Colors.white,
+      ),
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 
+        ),
+        itemBuilder: (context, index) {
+          return CustomCard();
+        },
       ),
     );
   }
